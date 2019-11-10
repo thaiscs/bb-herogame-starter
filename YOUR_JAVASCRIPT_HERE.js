@@ -3,7 +3,7 @@ const hero = {
     heroic: true,
     inventory: [],
     health: 10,
-    weapon: {type: "" , damage: 2 },
+    weapon: { type: "", damage: 2 },
 
 }
 
@@ -27,9 +27,9 @@ function rest(person) {
 
     if (person.health !== 10) {
         hero.health = 10
-    }        
+    }
     return person
-    
+
 }
 
 
@@ -41,33 +41,39 @@ Damage: ${weapon.damage}`)
 }
 
 
-const weapon = {type: 'dagger' , damage: 2}
+const weapon = { type: 'dagger', damage: 2 }
 
 
 function equipWeapon(person) {
     hero.weapon = hero.inventory[0]
-
+    
     if (person.inventory.length > 0) {
         person.weapon = person.inventory[0]
-    }     
-  
+    }
+
 }
 
 
 function changeName(person) {
     person.name = window.prompt('Type in the name of your hero:')
     return person
-    
-}
-// changeName(hero)
 
-function displayName(person) {
-    const stats = document.getElementById('stats')
-    stats.innerHTML = `<h2 id="name"></h2>`
-    const name = document.getElementById('name')
-    name.innerText = `Hello ${person.name}!`
-    
+}
+changeName(hero)
+
+
+function displayStats(person) {
+    const stats = document.createElement('p')
+    stats.innerText = `
+    Name: ${person.name}
+    Inventory: ${person.inventory}
+    Health: ${person.health}
+    Weapon: ${hero.weapon.type}, Damage: ${hero.weapon.damage}
+    `
+    const display = document.getElementById('stats')
+    display.appendChild(stats)
+
 }
 
-// displayName(hero)
+displayStats(hero)
 
